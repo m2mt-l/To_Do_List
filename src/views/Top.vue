@@ -22,6 +22,13 @@ import Vue from 'vue';
 
 export default Vue.extend({
     name: 'Top',
+    data() {
+        return {
+            Card:{
+              task: "",
+            }
+        };
+    },
 });
 </script>
 
