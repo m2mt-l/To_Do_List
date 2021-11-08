@@ -2,7 +2,7 @@
     <v-container fluid>
         <v-row dense>
             <v-col
-                v-for="card in 10"
+                v-for="card in todo"
                 :key="card"
             >
                 <v-card
@@ -11,8 +11,8 @@
                     elevation="4"
                     outlined
                 >
-                    <v-card-title>To Do List 1</v-card-title>
-                    <v-card-text>Go to Bank, shopping, gym, lunch, drink, movie theater, book store and home</v-card-text>
+                    <v-card-title>To Do List {{ card.count }}</v-card-title>
+                    <v-card-text>{{ card.task }}</v-card-text>
                     <v-card-action>
                         <v-icon
                             class="ml-2 mb-2"
@@ -31,13 +31,21 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-    name: 'ToDoCard.vue',
+    name: 'ToDoCard',
     data() {
         return {
             toDoList: [],
-            task: "",
         };
     },
+
+    props: {
+        todo: {
+            type: Array,
+        }
+    },
+
+    computed: {
+    }
 });
 </script>
 
