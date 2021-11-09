@@ -4,7 +4,6 @@
       <Top />
     </v-main>
   </v-app>
-  
 </template>
 
 <script lang="ts">
