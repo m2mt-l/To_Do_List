@@ -1,8 +1,14 @@
 <template>
   <v-container fluid>
     <v-row dense>
-      <v-col v-for="(card, index) in todo" :key="card.count">
-        <v-card class="mx-auto" max-width="344" elevation="4" outlined>
+      <v-col v-for="(card, index) in todo" :key="card.count" :cols="card.flex">
+        <v-card
+          class="mx-auto"
+          max-width="500"
+          min-width="340"
+          elevation="4"
+          outlined
+        >
           <v-card-title>To Do List {{ card.count }}</v-card-title>
           <v-card-text>{{ card.task }}</v-card-text>
           <v-card-actions>
