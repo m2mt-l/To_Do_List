@@ -1,5 +1,5 @@
 <template>
-    <v-form>
+    <v-form ref="form">
         <v-container>
             <v-text-field
                 v-model="card.task"
@@ -42,10 +42,12 @@ export default Vue.extend({
 
     methods: {
         addTask(): void {
-            this.card.count++;
-            let newCard: Card = new Card(this.card.task, this.card.count);
-            this.toDoList.push(newCard);
-            this.card.task = '';
+            if ((this.$refs as any).form.validate()) {
+                this.card.count++;
+                let newCard: Card = new Card(this.card.task, this.card.count);
+                this.toDoList.push(newCard);
+                (this.$refs as any).form.reset();
+            }
         },
     },
 
