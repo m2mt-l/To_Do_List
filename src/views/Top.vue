@@ -12,7 +12,7 @@
                 </v-icon>
             </v-text-field>
             <h2 v-if="completeTodo">Completed All Tasks!</h2>
-            <ToDoCard :todo="toDoList" />
+            <ToDoCard :todo="toDoList" @delete="validationReset" />
         </v-container>
     </v-form>
 </template>
@@ -46,8 +46,11 @@ export default Vue.extend({
                 this.card.count++;
                 let newCard: Card = new Card(this.card.task, this.card.count);
                 this.toDoList.push(newCard);
-                (this.$refs as any).form.reset();
+                this.validationReset();
             }
+        },
+        validationReset(): void {
+            (this.$refs as any).form.reset();
         },
     },
 
