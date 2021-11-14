@@ -1,5 +1,10 @@
-# to_do
-This is a develop site.
+# To Do List
+Recursion Vue.js Project To Do List
+
+## URL
+
+## Description
+Simply write a task and add this. If you finish the tasks, delete them.
 
 ## Project setup
 ```
