@@ -47,13 +47,6 @@ export default Vue.extend({
         completeTodo(): boolean {
             return this.toDoList.length === 0 && this.card.count != 0;
         },
-        /*
-      writeTask: {
-        set(value: string) {
-          this.card.task = value;
-        }
-      }
-*/
     },
 });
 </script>
