@@ -1,11 +1,12 @@
 <template>
     <v-form ref="form">
-        <v-container>
+        <v-container class="mt-10">
             <v-text-field
                 v-model="card.task"
                 placeholder="write a task"
                 :rules="nameRules"
                 required
+                max-width="800"
             >
                 <v-icon @click="addTask" slot="append" color="blue">
                     mdi-plus
