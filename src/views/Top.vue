@@ -15,7 +15,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import ToDoCard from '../components/ToDoCard.vue';
-import Card from '../card';
+import Card from '../models/card';
 
 export default Vue.extend({
     name: 'Top',
