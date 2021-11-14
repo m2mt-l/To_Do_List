@@ -1,13 +1,18 @@
 <template>
-    <v-form>
+    <v-form ref="form">
         <v-container>
-            <v-text-field v-model="card.task" placeholder="write a task">
+            <v-text-field
+                v-model="card.task"
+                placeholder="write a task"
+                :rules="nameRules"
+                required
+            >
                 <v-icon @click="addTask" slot="append" color="blue">
                     mdi-plus
                 </v-icon>
             </v-text-field>
-            <h2 v-if="completeTodo">Completed All To Do Lists!</h2>
-            <ToDoCard :todo="toDoList" />
+            <h2 v-if="completeTodo">Completed All Tasks!</h2>
+            <ToDoCard :todo="toDoList" @delete="validationReset" />
         </v-container>
     </v-form>
 </template>
@@ -31,15 +36,21 @@ export default Vue.extend({
                 task: '',
                 count: 0,
             },
+            nameRules: [(v: any) => !!v || 'Task is required'],
         };
     },
 
     methods: {
         addTask(): void {
-            this.card.count++;
-            let newCard: Card = new Card(this.card.task, this.card.count);
-            this.toDoList.push(newCard);
-            this.card.task = '';
+            if ((this.$refs as any).form.validate()) {
+                this.card.count++;
+                let newCard: Card = new Card(this.card.task, this.card.count);
+                this.toDoList.push(newCard);
+                this.validationReset();
+            }
+        },
+        validationReset(): void {
+            (this.$refs as any).form.reset();
         },
     },
 
